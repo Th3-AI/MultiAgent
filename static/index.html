@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiAgent - AI-Powered Financial Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <!-- Animated Background -->
+        <div class="animated-bg">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="landing-nav">
+            <div class="nav-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>MultiAgent</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn-ghost" onclick="showLogin()">Sign In</button>
+                    <button class="btn-primary" onclick="showRegister()">Get Started</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-sparkles"></i>
+                    <span>AI-Powered Financial Intelligence</span>
+                </div>
+                <h1 class="hero-title">
+                    Your Personal
+                    <span class="gradient-text">AI Financial Team</span>
+                </h1>
+                <p class="hero-subtitle">
+                    4 intelligent agents working together to analyze your finances, 
+                    manage tasks, research opportunities, and accelerate your learning.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-hero-primary" onclick="showRegister()">
+                        <span>Start Free</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-hero-secondary" onclick="scrollToFeatures()">
+                        <i class="fas fa-play-circle"></i>
+                        <span>See How It Works</span>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">AI Agents</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">29</div>
+                        <div class="stat-label">Capabilities</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Insights</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <i class="fas fa-chart-line"></i>
+                    <div>Financial Agent</div>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-search"></i>
+                    <div>Research Agent</div>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-bolt"></i>
+                    <div>Productivity Agent</div>
+                </div>
+                <div class="floating-card card-4">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div>Learning Agent</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-header">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to master your finances</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Analysis</h3>
+                    <p>Advanced algorithms analyze your spending patterns and provide personalized insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3>Smart Import</h3>
+                    <p>Upload CSV/Excel files and AI automatically categorizes all your transactions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Visual Insights</h3>
+                    <p>Beautiful charts and graphs make understanding your finances effortless</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Multi-Agent System</h3>
+                    <p>4 specialized AI agents collaborate to handle all aspects of your financial life</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is encrypted and stored securely. We never share your information</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Access your financial dashboard anywhere, on any device</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Finances?</h2>
+                <p>Join thousands of users who are already using AI to manage their money smarter</p>
+                <button class="btn-cta" onclick="showRegister()">
+                    <span>Get Started Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginSection" class="auth-modal hidden">
+        <div class="auth-overlay" onclick="hideLanding()"></div>
+        <div class="auth-container">
+            <button class="close-btn" onclick="hideLanding()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <i class="fas fa-brain"></i>
+                <h2>Welcome Back</h2>
+                <p>Sign in to your account</p>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span>Sign In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="#" onclick="showRegister()">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerSection" class="auth-modal hidden">
+        <div class="auth-overlay" onclick="hideLanding()"></div>
+        <div class="auth-container">
+            <button class="close-btn" onclick="hideLanding()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <i class="fas fa-user-plus"></i>
+                <h2>Create Account</h2>
+                <p>Start your financial journey</p>
+            </div>
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="regName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="regEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="regPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="auth-footer">
+                <p>Already have an account? <a href="#" onclick="showLogin()">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="mainDashboard" class="hidden">
+        <!-- Top Navigation -->
+        <nav class="dashboard-nav">
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>MultiAgent</span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <button class="nav-item active" onclick="showSection('dashboard')" data-section="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" onclick="showSection('financial')" data-section="financial">
+                    <i class="fas fa-wallet"></i>
+                    <span>Financial</span>
+                </button>
+                <button class="nav-item" onclick="showSection('tasks')" data-section="tasks">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                </button>
+                <button class="nav-item" onclick="showSection('agents')" data-section="agents">
+                    <i class="fas fa-robot"></i>
+                    <span>Agents</span>
+                </button>
+            </div>
+            <div class="nav-right">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Dashboard Section -->
+            <section id="dashboardSection" class="dashboard-section">
+                <!-- Welcome Header -->
+                <div class="welcome-header">
+                    <div class="welcome-text">
+                        <h1>Welcome back! 👋</h1>
+                        <p>Here's your financial overview</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-action-secondary" onclick="refreshCharts()">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Refresh</span>
+                        </button>
+                        <button class="btn-action-primary" onclick="showSection('financial')">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Transaction</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card income-card">
+                        <div class="stat-icon-wrapper income">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Total Income</span>
+                            <span class="stat-value" id="dashIncome">$0</span>
+                            <div class="stat-footer">
+                                <span class="stat-change positive">
+                                    <i class="fas fa-arrow-up"></i> 12%
+                                </span>
+                                <span class="stat-period">vs last month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card expense-card">
+                        <div class="stat-icon-wrapper expense">
+                            <i class="fas fa-arrow-trend-down"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Total Expenses</span>
+                            <span class="stat-value" id="dashExpense">$0</span>
+                            <div class="stat-footer">
+                                <span class="stat-change negative">
+                                    <i class="fas fa-arrow-up"></i> 5%
+                                </span>
+                                <span class="stat-period">vs last month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card savings-card">
+                        <div class="stat-icon-wrapper savings">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Savings Rate</span>
+                            <span class="stat-value" id="dashSavings">0%</span>
+                            <div class="stat-footer">
+                                <span class="stat-change neutral">
+                                    <i class="fas fa-minus"></i> 0%
+                                </span>
+                                <span class="stat-period">of income</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card health-card">
+                        <div class="stat-icon-wrapper health">
+                            <div class="health-score-ring">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    <path id="healthRing" class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                </svg>
+                                <div class="health-score-text" id="dashHealthRing">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Financial Health</span>
+                            <span class="stat-value" id="dashHealth">0</span>
+                            <div class="stat-footer">
+                                <span class="stat-period">out of 100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="dashboard-grid">
+                    <!-- Left Column -->
+                    <div class="dashboard-left">
+                        <!-- Spending Chart -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <h3>Spending Breakdown</h3>
+                                    <p>Where your money goes</p>
+                                </div>
+                                <button class="btn-icon" onclick="refreshCharts()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div id="dashSpendingChart" class="chart-container"></div>
+                        </div>
+
+                        <!-- Recent Transactions -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <h3>Recent Transactions</h3>
+                                    <p>Latest activity</p>
+                                </div>
+                                <button class="btn-icon" onclick="loadTransactions()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div id="dashRecentTransactions" class="recent-transactions"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="dashboard-right">
+                        <!-- Income Trend -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <h3>Income Trend</h3>
+                                    <p>Monthly income over time</p>
+                                </div>
+                                <button class="btn-icon" onclick="refreshCharts()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <div id="dashIncomeChart" class="chart-container"></div>
+                        </div>
+
+                        <!-- AI Insights -->
+                        <div class="dashboard-card insights-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <h3><i class="fas fa-lightbulb"></i> AI Insights</h3>
+                                    <p>Personalized recommendations</p>
+                                </div>
+                            </div>
+                            <div id="dashInsights" class="insights-list"></div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="dashboard-card quick-actions-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <h3>Quick Actions</h3>
+                                </div>
+                            </div>
+                            <div class="quick-actions-grid">
+                                <button class="quick-action-btn" onclick="showSection('financial')">
+                                    <div class="qa-icon income">
+                                        <i class="fas fa-plus-circle"></i>
+                                    </div>
+                                    <span>Add Transaction</span>
+                                </button>
+                                <button class="quick-action-btn" onclick="getQuickAdvice()">
+                                    <div class="qa-icon primary">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <span>AI Advice</span>
+                                </button>
+                                <button class="quick-action-btn" onclick="showSection('tasks')">
+                                    <div class="qa-icon warning">
+                                        <i class="fas fa-tasks"></i>
+                                    </div>
+                                    <span>Create Task</span>
+                                </button>
+                                <button class="quick-action-btn" onclick="runAnalysis()">
+                                    <div class="qa-icon secondary">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <span>Run Analysis</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Financial Section -->
+            <section id="financialSection" class="dashboard-section hidden">
+                <div class="section-title">
+                    <h1>Financial Management</h1>
+                    <p>Track and analyze your finances</p>
+                </div>
+
+                <div class="financial-grid">
+                    <div class="box">
+                        <h3><i class="fas fa-plus-circle"></i> Add Transaction</h3>
+                        <form id="transactionForm" class="form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select id="transType">
+                                        <option value="expense">Expense</option>
+                                        <option value="income">Income</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="number" id="transAmount" step="0.01" required placeholder="0.00">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <input type="text" id="transCategory" required placeholder="e.g., Food, Rent">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text" id="transDescription" placeholder="Optional">
+                            </div>
+                            <button type="submit" class="btn-submit">Add Transaction</button>
+                        </form>
+                    </div>
+
+                    <div class="box">
+                        <h3><i class="fas fa-university"></i> Connect Bank Account</h3>
+                        <p style="margin-bottom:1rem;color:rgba(255,255,255,0.7);">Automatically sync transactions from your bank using Plaid</p>
+                        <button onclick="connectBankAccount()" class="btn-submit" style="margin-bottom:1rem;">
+                            <i class="fas fa-link"></i> Connect Bank Account
+                        </button>
+                        <div id="connectedAccounts" class="connected-accounts"></div>
+                    </div>
+
+                    <div class="box">
+                        <h3><i class="fas fa-file-upload"></i> Import CSV/Excel</h3>
+                        <p style="margin-bottom:1rem;color:rgba(255,255,255,0.7);">Or upload a file manually</p>
+                        <form id="uploadForm" class="upload-form">
+                            <div class="file-drop">
+                                <input type="file" id="fileInput" accept=".csv,.xlsx,.xls">
+                                <label for="fileInput">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Drop CSV/Excel file or click to browse</span>
+                                </label>
+                                <span id="fileName" class="file-name"></span>
+                            </div>
+                            <button type="submit" class="btn-submit">Analyze & Import</button>
+                        </form>
+                        <div id="uploadResult" class="upload-result hidden"></div>
+                    </div>
+
+                    <div class="box full-width">
+                        <h3><i class="fas fa-robot"></i> AI Financial Advisor</h3>
+                        <div class="advisor-container">
+                            <textarea id="adviceContext" placeholder="Ask me anything about your finances..." rows="4"></textarea>
+                            <button onclick="getAdvice()" class="btn-submit">Get AI Advice</button>
+                            <div id="adviceResult" class="advice-result hidden"></div>
+                        </div>
+                    </div>
+
+                    <div class="box full-width">
+                        <div class="box-header">
+                            <h3><i class="fas fa-history"></i> Recent Transactions</h3>
+                            <button class="btn-icon" onclick="loadTransactions()"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                        <div id="transactionsList" class="transactions-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasks Section -->
+            <section id="tasksSection" class="dashboard-section hidden">
+                <div class="section-title">
+                    <h1>Task Management</h1>
+                    <p>Coordinate AI agents</p>
+                </div>
+
+                <div class="tasks-grid">
+                    <div class="box">
+                        <h3><i class="fas fa-plus"></i> Create Task</h3>
+                        <form id="taskForm" class="form">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" id="taskTitle" required placeholder="What needs to be done?">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="taskDescription" rows="3"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Agent</label>
+                                    <select id="taskAgent">
+                                        <option value="financial">💰 Financial</option>
+                                        <option value="research">🔍 Research</option>
+                                        <option value="productivity">⚡ Productivity</option>
+                                        <option value="learning">📚 Learning</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Priority</label>
+                                    <select id="taskPriority">
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-submit">Create Task</button>
+                        </form>
+                    </div>
+
+                    <div class="box tasks-list-box">
+                        <div class="box-header">
+                            <h3><i class="fas fa-list-check"></i> Active Tasks</h3>
+                            <button class="btn-icon" onclick="loadTasks()"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                        <div id="tasksList" class="tasks-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agents Section -->
+            <section id="agentsSection" class="dashboard-section hidden">
+                <div class="section-title">
+                    <h1>AI Agents</h1>
+                    <p>Your intelligent assistants</p>
+                </div>
+
+                <div class="agents-grid">
+                    <div class="agent-box financial">
+                        <div class="agent-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Financial Agent</h3>
+                        <p>Expert in financial analysis, budgeting, and investment strategies</p>
+                        <div class="agent-stats">
+                            <div><span id="financialTasks">0</span> Tasks</div>
+                            <div><span id="financialSuccess">0%</span> Success</div>
+                        </div>
+                        <button class="btn-agent" onclick="testAgent('financial')">Test Agent</button>
+                    </div>
+
+                    <div class="agent-box research">
+                        <div class="agent-icon"><i class="fas fa-search"></i></div>
+                        <h3>Research Agent</h3>
+                        <p>Gathers insights, analyzes trends, and provides market intelligence</p>
+                        <div class="agent-stats">
+                            <div><span id="researchTasks">0</span> Tasks</div>
+                            <div><span id="researchSuccess">0%</span> Success</div>
+                        </div>
+                        <button class="btn-agent" onclick="testAgent('research')">Test Agent</button>
+                    </div>
+
+                    <div class="agent-box productivity">
+                        <div class="agent-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Productivity Agent</h3>
+                        <p>Optimizes workflows, prioritizes tasks, and boosts efficiency</p>
+                        <div class="agent-stats">
+                            <div><span id="productivityTasks">0</span> Tasks</div>
+                            <div><span id="productivitySuccess">0%</span> Success</div>
+                        </div>
+                        <button class="btn-agent" onclick="testAgent('productivity')">Test Agent</button>
+                    </div>
+
+                    <div class="agent-box learning">
+                        <div class="agent-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Learning Agent</h3>
+                        <p>Creates learning paths, recommends resources, tracks progress</p>
+                        <div class="agent-stats">
+                            <div><span id="learningTasks">0</span> Tasks</div>
+                            <div><span id="learningSuccess">0%</span> Success</div>
+                        </div>
+                        <button class="btn-agent" onclick="testAgent('learning')">Test Agent</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
