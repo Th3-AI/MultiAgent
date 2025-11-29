@@ -71,6 +71,10 @@ plaid_env_map = {
     'production': plaid.Environment.Production
 }
 
+# Handle if Development doesn't exist in this Plaid version
+if not hasattr(plaid.Environment, 'Development'):
+    plaid_env_map['development'] = plaid.Environment.Sandbox
+
 configuration = plaid.Configuration(
     host=plaid_env_map.get(PLAID_ENV, plaid.Environment.Sandbox),
     api_key={
