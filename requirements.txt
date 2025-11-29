@@ -8,6 +8,8 @@ pandas
 numpy
 scikit-learn
 requests
+google
+google-generativeai
 openpyxl
 werkzeug
 plaid-python
