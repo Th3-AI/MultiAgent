@@ -11,3 +11,4 @@ requests
 openpyxl
 werkzeug
 plaid-python
+gunicorn
