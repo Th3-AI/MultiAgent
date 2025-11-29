@@ -202,37 +202,6 @@ Each agent has specialized capabilities:
 - SQL injection prevention via SQLAlchemy ORM
 - Environment variable configuration
 
-## 🚧 Production Deployment
-
-### Important Security Updates
-
-Before deploying to production:
-
-1. **Password Hashing**
-```python
-from werkzeug.security import generate_password_hash, check_password_hash
-
-# In registration
-user.password = generate_password_hash(data['password'])
-
-# In login
-check_password_hash(user.password, data['password'])
-```
-
-2. **Environment Variables**
-- Use strong SECRET_KEY
-- Secure database connection
-- Protect API keys
-
-3. **HTTPS**
-- Enable SSL/TLS
-- Use secure cookies
-
-4. **Database**
-- Use PostgreSQL or MySQL
-- Regular backups
-- Connection pooling
-
 ## 📝 Development
 
 ### Adding New Agents
@@ -271,28 +240,6 @@ def new_endpoint():
     return jsonify({'result': 'success'})
 ```
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Database not found**
-```bash
-python
->>> from app import app, db
->>> with app.app_context():
-...     db.create_all()
-```
-
-2. **Gemini API errors**
-- Check API key in `.env`
-- Verify API quota
-- Check internet connection
-
-3. **Port already in use**
-```bash
-# Change port in app.py
-app.run(debug=True, port=5001)
-```
 
 ## 📚 Dependencies
 
@@ -301,22 +248,10 @@ app.run(debug=True, port=5001)
 - Flask-JWT-Extended 4.5.3 - Authentication
 - Flask-CORS 4.0.0 - Cross-origin requests
 - google-generativeai 0.3.1 - AI integration
+- openai - AI integration (backup)
 - pandas 2.1.4 - Data analysis
 - numpy 1.26.2 - Numerical computing
 - scikit-learn 1.3.2 - Machine learning
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
@@ -324,13 +259,6 @@ This project is licensed under the MIT License.
 - Flask community for excellent documentation
 - Plotly.js for beautiful visualizations
 - Font Awesome for icons
-
-## 📞 Support
-
-For issues and questions:
-- Create an issue on GitHub
-- Check existing documentation
-- Review API endpoints
 
 ## 🔮 Future Enhancements
 
@@ -344,7 +272,8 @@ For issues and questions:
 - [ ] Voice commands
 - [ ] Dark mode
 - [ ] Multi-language support
+- [ ] Working Multi Agent System
 
 ---
 
-**Built with ❤️ using Flask, Google Gemini AI, and modern web technologies**
+**Built with ❤️ At MumbaiHacks 2025
